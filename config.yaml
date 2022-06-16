@@ -1,0 +1,23 @@
+source:
+  type: file
+  config:
+    path: test.json
+    type: csv
+    name: test
+    pk: id
+    comment: this is test table
+    fields:
+      - id
+      - name
+      - age
+      - address
+      - phone
+      - email
+
+destination:
+  type: mysql
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  password: 123456
+  database: test

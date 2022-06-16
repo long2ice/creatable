@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "creatable"
+version = "0.1.0"
+description = "A tool to create table from file/database to another database"
+authors = ["long2ice <long2ice@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+homepage = "https://github.com/long2ice/creatable"
+repository = "https://github.com/long2ice/creatable.git"
+documentation = "https://github.com/long2ice/creatable"
+packages = [
+    { include = "creatable" }
+]
+include = ["CHANGELOG.md", "LICENSE", "README.md"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+typer = "*"
+pydantic = "*"
+mysqlclient = {version = "*", optional = true}
+psycopg = { extras = ["pool", "binary"], version = "*", optional = true }
+loguru = "*"
+
+[tool.poetry.dev-dependencies]
+mypy = "*"
+flake8 = "*"
+isort = "*"
+black = "*"
+pytest = "*"
+bandit = "*"
+pyproject-flake8 = "*"
+
+[tool.poetry.scripts]
+aerich = "creatable.cli:main"
+
+[tool.poetry.extras]
+mysql = ["mysqlclient"]
+starrocks = ["mysqlclient"]
+postgres = ["psycopg"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 100
+target-version = ['py36', 'py37', 'py38', 'py39']
+
+[tool.mypy]
+pretty = true
+ignore_missing_imports = true
+
+[tool.flake8]
+ignore = 'E501,W503,E203'
